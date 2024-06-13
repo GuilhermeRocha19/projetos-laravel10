@@ -8,9 +8,7 @@
 </head>
 
 <body>
-<?php
-phpinfo();
-?>
+
     <a href="{{route('conta.create')}}">Cadastrar</a>
 
     <h2>Listar as Contas</h2>
