@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Conta;
 use Illuminate\Http\Request;
 
 class ContaController extends Controller
@@ -17,8 +18,12 @@ class ContaController extends Controller
     }
 
     //Carregar Formulário cadastrar novva conta
-    public function store(){
-        dd("Cadastrar");
+    public function store(Request $request){
+        
+        //Cadastrar no banco de dados na tabela CONTAS
+        Conta::create($request->all());
+        // Redirecionar o usuário, enviar a mensagem de sucesso
+        return redirect()->route('conta.show')->with('sucess', 'Conta cadastrada com sucesso');
     }
 
     //Cadastrar no banco de dados nova conta
