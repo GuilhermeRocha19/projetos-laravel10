@@ -1,0 +1,41 @@
+[33mcommit ca7acc02ddc87f54939178cb5ad0616faf2fc28e[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m)[m
+Author: GuilhermeRocha19 <guilhermepmrocha@gmail.com>
+Date:   Sat Jun 15 15:11:56 2024 -0300
+
+    Criando Request para o formulário e Listagem
+
+[33mcommit 7859d0c9e1d5c2c29baecb0d884ab618a2ac368f[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: GuilhermeRocha19 <guilhermepmrocha@gmail.com>
+Date:   Fri Jun 14 09:22:47 2024 -0300
+
+    Criando formuláario e conectando com o banco de dados
+
+[33mcommit 03c5112319565a2e5dbca4ca43b5fc9eb4d7f8b4[m
+Author: GuilhermeRocha19 <guilhermepmrocha@gmail.com>
+Date:   Thu Jun 13 09:39:31 2024 -0300
+
+    Configuração do banco de dados
+
+[33mcommit 32819a4f195afa27e0a940930a46677d0fe369f1[m
+Author: GuilhermeRocha19 <guilhermepmrocha@gmail.com>
+Date:   Wed Jun 12 09:38:14 2024 -0300
+
+    Criando as views do projeto
+
+[33mcommit 5a589c52a5a9e7bf38acaa139460df819c9a1e12[m
+Author: GuilhermeRocha19 <guilhermepmrocha@gmail.com>
+Date:   Tue Jun 11 11:33:29 2024 -0300
+
+    Criaçcao de rotas e ajustes
+
+[33mcommit e63786dffa474d1ce13e4b54bce30d2b91ab8391[m
+Author: GuilhermeRocha19 <guilhermepmrocha@gmail.com>
+Date:   Mon Jun 10 09:05:34 2024 -0300
+
+    Ajustes
+
+[33mcommit 7772e7f51895919bdcd87d2c24222fd501061c17[m
+Author: GuilhermeRocha19 <guilhermepmrocha@gmail.com>
+Date:   Mon Jun 10 08:35:52 2024 -0300
+
+    first commit
