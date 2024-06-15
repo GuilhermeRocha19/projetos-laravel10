@@ -86,3 +86,11 @@ php artisan make:model NomeDaModel
 ```
 php artisan make:model Conta
 ```
+
+Criar Requests
+```
+php artisan make:request NomeDaRequest
+```
+```
+php artisan make:request ContaRequest
+```

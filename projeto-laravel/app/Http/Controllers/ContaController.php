@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ContaRequest;
 use App\Models\Conta;
 use Illuminate\Http\Request;
 
@@ -9,7 +10,10 @@ class ContaController extends Controller
 {
     //Listar Contas
     public function index(){
-        return view('contas.index');
+        $contas = Conta::orderByDesc('created_at')->get();
+        
+        //Carregar a VIEW
+        return view('contas.index',['contas' => $contas]); 
     }
 
     //Detalhes da Conta
@@ -18,7 +22,9 @@ class ContaController extends Controller
     }
 
     //Carregar Formulário cadastrar novva conta
-    public function store(Request $request){
+    public function store(ContaRequest $request){
+        //Validar formulário
+        $request->validated(); 
         
         //Cadastrar no banco de dados na tabela CONTAS
         Conta::create($request->all());
