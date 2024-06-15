@@ -27,14 +27,15 @@ class ContaController extends Controller
         $request->validated(); 
         
         //Cadastrar no banco de dados na tabela CONTAS
-        Conta::create($request->all());
+        $conta = Conta::create($request->all());
         // Redirecionar o usuário, enviar a mensagem de sucesso
-        return redirect()->route('conta.show')->with('sucess', 'Conta cadastrada com sucesso');
+        return redirect()->route('conta.show',['conta' => $conta->id])->with('sucess', 'Conta cadastrada com sucesso');
     }
 
     //Cadastrar no banco de dados nova conta
-    public function show(){
-        return view('contas.show');
+    public function show(Conta $conta){
+        //Carregar a VIEW
+        return view('contas.show',['conta' => $conta]);
     }
 
     //Carregar o formulário editar a conta

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Celke</title>
+    <title>Projeto</title>
 </head>
 
 <body>
@@ -16,9 +16,15 @@
     @if(session('sucess'))
     <span style="color:#082;">
         {{session('sucess')}}
-    </span>
+    </span><br>
     @endif
 
+   ID: {{ $conta->id}}<br>
+   Nome: {{ $conta->nome}}<br>
+   Valor: {{ number_format($conta->valor,2,',','.')}}<br>
+   Vencimento: {{\Carbon\Carbon::parse($conta->vencimento)->tz('America/Sao_Paulo')->format('d/m/Y')}}<br>
+   Data Criação: {{\Carbon\Carbon::parse($conta->created_at)->tz('America/Sao_Paulo')->format('d/m/Y H:i:s')}}<br>
+   Última Alteração: {{\Carbon\Carbon::parse($conta->updated_at)->tz('America/Sao_Paulo')->format('d/m/Y H:i:s')}}<br>
 
 </body>
 
