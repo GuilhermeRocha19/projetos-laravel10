@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ContaRequest;
 use App\Models\Conta;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class ContaController extends Controller
 {
@@ -48,19 +50,30 @@ class ContaController extends Controller
         //Validar o form
         $request->validated();
 
+        try{
         $conta->update([
             'nome' => $request->nome,
             'valor' => $request->valor,
             'vencimento' => $request->vencimento
         ]);
+        //Salvar Log de Sucesso
+        Log::info('Conta Alterada com Sucesso',['id' => $conta->id]);
 
         return redirect()->route('conta.show', ['conta' => $conta])->with('sucess', "Conta Alterada com sucesso");
+         } catch(Exception $e){
+            //Mensagem de erro
+            Log::warning("Conta não editada", [$e->getMessage()]);
+            return back()->withInput()->with('error','Conta não editada');
+         }
         
     }
 
     //Excluir a conta do banco de dados
-    public function destroy(){
-        dd("apagar");
+    public function destroy(Conta $conta){
+        //Excluir do banco de dados
+        $conta->delete();
+
+        return redirect()->route('conta.index', ['conta' => $conta])->with('sucess', "Conta excluida com sucesso");
     }
 
 }

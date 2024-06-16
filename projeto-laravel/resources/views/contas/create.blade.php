@@ -9,7 +9,7 @@
 
 <body>
 
-    <a href="{{route('conta.index')}}">Listagem</a>
+    <a href="{{route('conta.index')}}"><button>Listagem</button></a>
 
     <h2>Cadastrar a Conta</h2>
 

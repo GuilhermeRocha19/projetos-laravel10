@@ -9,7 +9,7 @@
 
 <body>
 
-    <a href="{{ route('conta.index') }}">Listagem</a>
+    <a href="{{ route('conta.index') }}"><button>Listagem</button></a>
 
     <h2>Detalhes da Conta</h2>
     <!-- Verificar se existe a sessão sucess e imprimir o valor -->
@@ -27,7 +27,7 @@
     Última Alteração:
     {{ \Carbon\Carbon::parse($conta->updated_at)->tz('America/Sao_Paulo')->format('d/m/Y H:i:s') }}<br>
     <br>
-    <a href="{{ route('conta.edit', ['conta' => $conta->id]) }}">Editar</a>
+    <a href="{{ route('conta.edit', ['conta' => $conta->id]) }}"><button>Editar</button></a>
 
 </body>
 

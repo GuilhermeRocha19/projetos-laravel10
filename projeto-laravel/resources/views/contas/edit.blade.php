@@ -8,10 +8,16 @@
 </head>
 
 <body>
-    <a href="{{ route('conta.index') }}">Listagem</a>
-    <a href="{{ route('conta.show', ['conta' => $conta->id]) }}">Visualizar</a>
+    <a href="{{ route('conta.index') }}"><button>Listagem</button></a>
+    <a href="{{ route('conta.show', ['conta' => $conta->id]) }}"><button>Visualizar</button></a>
     
     <h2>Editar a Conta</h2>
+
+    @if (session('error'))
+    <span style="color:red;">
+        {{ session('error') }}
+    </span><br>
+@endif <br>
 
     @if($errors->any())
     <span style="color:red;">
