@@ -39,13 +39,23 @@ class ContaController extends Controller
     }
 
     //Carregar o formulário editar a conta
-    public function edit(){
-        return view('contas.edit');
+    public function edit(Conta $conta){
+        return view('contas.edit', ['conta' => $conta]);
     }
 
     //Editar no banco de dados a conta
-    public function update(){
-        return view('contas.update');
+    public function update(ContaRequest $request, Conta $conta){
+        //Validar o form
+        $request->validated();
+
+        $conta->update([
+            'nome' => $request->nome,
+            'valor' => $request->valor,
+            'vencimento' => $request->vencimento
+        ]);
+
+        return redirect()->route('conta.show', ['conta' => $conta])->with('sucess', "Conta Alterada com sucesso");
+        
     }
 
     //Excluir a conta do banco de dados

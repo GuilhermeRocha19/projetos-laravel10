@@ -9,22 +9,25 @@
 
 <body>
 
-    <a href="{{route('conta.index')}}">Listagem</a>
+    <a href="{{ route('conta.index') }}">Listagem</a>
 
     <h2>Detalhes da Conta</h2>
     <!-- Verificar se existe a sessão sucess e imprimir o valor -->
-    @if(session('sucess'))
-    <span style="color:#082;">
-        {{session('sucess')}}
-    </span><br>
+    @if (session('sucess'))
+        <span style="color:#082;">
+            {{ session('sucess') }}
+        </span><br>
     @endif
 
-   ID: {{ $conta->id}}<br>
-   Nome: {{ $conta->nome}}<br>
-   Valor: {{ number_format($conta->valor,2,',','.')}}<br>
-   Vencimento: {{\Carbon\Carbon::parse($conta->vencimento)->tz('America/Sao_Paulo')->format('d/m/Y')}}<br>
-   Data Criação: {{\Carbon\Carbon::parse($conta->created_at)->tz('America/Sao_Paulo')->format('d/m/Y H:i:s')}}<br>
-   Última Alteração: {{\Carbon\Carbon::parse($conta->updated_at)->tz('America/Sao_Paulo')->format('d/m/Y H:i:s')}}<br>
+    ID: {{ $conta->id }}<br>
+    Nome: {{ $conta->nome }}<br>
+    Valor: {{ number_format($conta->valor, 2, ',', '.') }}<br>
+    Vencimento: {{ \Carbon\Carbon::parse($conta->vencimento)->tz('America/Sao_Paulo')->format('d/m/Y') }}<br>
+    Data Criação: {{ \Carbon\Carbon::parse($conta->created_at)->tz('America/Sao_Paulo')->format('d/m/Y H:i:s') }}<br>
+    Última Alteração:
+    {{ \Carbon\Carbon::parse($conta->updated_at)->tz('America/Sao_Paulo')->format('d/m/Y H:i:s') }}<br>
+    <br>
+    <a href="{{ route('conta.edit', ['conta' => $conta->id]) }}">Editar</a>
 
 </body>
 
