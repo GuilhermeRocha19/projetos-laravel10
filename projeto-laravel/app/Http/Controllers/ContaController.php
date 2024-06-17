@@ -25,13 +25,26 @@ class ContaController extends Controller
 
     //Carregar Formulário cadastrar novva conta
     public function store(ContaRequest $request){
+
+
         //Validar formulário
         $request->validated(); 
         
-        //Cadastrar no banco de dados na tabela CONTAS
-        $conta = Conta::create($request->all());
-        // Redirecionar o usuário, enviar a mensagem de sucesso
-        return redirect()->route('conta.show',['conta' => $conta->id])->with('sucess', 'Conta cadastrada com sucesso');
+        try{
+
+            //Cadastrar no banco de dados na tabela CONTAS
+            $conta = Conta::create([
+                'nome' => $request->nome,
+                'valor' => str_replace(',','.', str_replace('.','',$request->valor)),
+                'vencimento' => $request->vencimento
+            ]);
+    
+    
+            // Redirecionar o usuário, enviar a mensagem de sucesso
+            return redirect()->route('conta.show',['conta' => $conta->id])->with('sucess', 'Conta cadastrada com sucesso');
+        }catch(Exception $e){
+            return back()->withInput()->with('error','Conta não Cadastrada');
+        }
     }
 
     //Cadastrar no banco de dados nova conta
@@ -53,7 +66,7 @@ class ContaController extends Controller
         try{
         $conta->update([
             'nome' => $request->nome,
-            'valor' => $request->valor,
+            'valor' => str_replace(',','.', str_replace('.','',$request->valor)),
             'vencimento' => $request->vencimento
         ]);
         //Salvar Log de Sucesso

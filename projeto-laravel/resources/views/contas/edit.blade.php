@@ -34,17 +34,19 @@
         <input type="text" name="nome" value="{{ old('nome',$conta->nome) }}"><br>
 
         <label for="valor">Valor</label>
-        <input type="text" name="valor" value="{{ old('valor',$conta->valor) }}"><br>
+        <input type="text" id="valor" name="valor" value="{{ old('valor',isset($conta->valor) ? number_format($conta->valor, 2, ',', '.'): '') }}"><br>
 
         <label for="vencimento">Vencimento</label>
         <input type="date" name="vencimento" value="{{ old('vencimento',$conta->vencimento) }}"><br>
 
         <br>
 
+        
         <button type="submit">Editar</button>
-
+        
     </form>
 
+    <script src=" {{ asset('js/custom.js') }}"></script>
 </body>
 
 </html>
