@@ -1,14 +1,5 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projeto</title>
-</head>
-
-<body>
-
+@extends('layouts/admin')
+@section('content')
     <a href="{{ route('conta.index') }}"><button>Listagem</button></a>
 
     <h2>Detalhes da Conta</h2>
@@ -28,7 +19,4 @@
     {{ \Carbon\Carbon::parse($conta->updated_at)->tz('America/Sao_Paulo')->format('d/m/Y H:i:s') }}<br>
     <br>
     <a href="{{ route('conta.edit', ['conta' => $conta->id]) }}"><button>Editar</button></a>
-
-</body>
-
-</html>
+@endsection

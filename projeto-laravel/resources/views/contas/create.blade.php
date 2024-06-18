@@ -1,30 +1,24 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+@extends('layouts/admin')
+@section('content')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Celke</title>
-</head>
 
-<body>
 
-    <a href="{{route('conta.index')}}"><button>Listagem</button></a>
+    <a href="{{ route('conta.index') }}"><button>Listagem</button></a>
 
     <h2>Cadastrar a Conta</h2>
 
     @if (session('error'))
-    <span style="color:red;">
-        {{ session('error') }}
-    </span><br>
-@endif <br>
+        <span style="color:red;">
+            {{ session('error') }}
+        </span><br>
+    @endif <br>
 
-    @if($errors->any())
-    <span style="color:red;">
-        @foreach($errors->all() as $error)
-        {{$error}} <br>
-        @endforeach
-    </span>
+    @if ($errors->any())
+        <span style="color:red;">
+            @foreach ($errors->all() as $error)
+                {{ $error }} <br>
+            @endforeach
+        </span>
     @endif
     <br>
 
@@ -42,7 +36,5 @@
         <button type="submit">Cadastrar</button>
     </form>
 
-<script src=" {{ asset('js/custom.js') }}"></script>
-</body>
-
-</html>
+    
+@endsection

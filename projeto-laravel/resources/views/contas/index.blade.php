@@ -1,14 +1,5 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contas</title>
-</head>
-
-<body>
-
+@extends('layouts/admin')
+@section('content')
     <a href="{{ route('conta.create') }}"><button>Cadastrar</button></a>
 
     <h2>Listar as Contas</h2>
@@ -42,8 +33,4 @@
     @empty
         <span style="color: #f00;"> Nenhuma conta encontrada</span>
     @endforelse
-
-
-</body>
-
-</html>
+@endsection

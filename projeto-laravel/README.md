@@ -94,3 +94,13 @@ php artisan make:request NomeDaRequest
 ```
 php artisan make:request ContaRequest
 ```
+
+Criar Seed
+
+```
+php artisan make:seeder ContaSeeder
+```
+Executar as Seed
+```
+php artisan db:seed
+```
