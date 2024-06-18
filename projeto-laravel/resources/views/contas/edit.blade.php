@@ -1,45 +1,60 @@
 @extends('layouts/admin')
 @section('content')
+    <div class="card mt-4 mb-4 border-light shadow">
+        <div class="card-header d-flex justify-content-between">
+            <span>Editar Conta</span>
+            <span>
+                <a href="{{ route('conta.index') }}" class="btn btn-info btn-sm me-1">Listagem</a>
+                <a href="{{ route('conta.show', ['conta' => $conta->id]) }}"
+                    class="btn btn-warning btn-sm me-1">Visualizar</a>
+            </span>
+        </div>
+
+        @if (session('error'))
+            <div class="alert alert-danger" role="alert">
+                <span>
+                    {{ session('error') }}
+                </span>
+            </div>
+        @endif
+
+        @if ($errors->any())
+            <div class="alert alert-danger" role="alert">
+                <span>
+                    @foreach ($errors->all() as $error)
+                        {{ $error }} <br>
+                    @endforeach
+            </div>
+            </span>
+        @endif
 
 
+        <div class="card-body">
+            <form action="{{ route('conta.update', ['conta' => $conta->id]) }}" method="POST" class="row g-3">
+                @csrf
+                @method('PUT')
+                <div class="col-md-12">
+                    <label for="nome" class="form-label">Nome</label>
+                    <input type="text" name="nome" id="nome" value="{{ old('nome', $conta->nome) }}"
+                        class="form-control">
+                </div>
 
-    <a href="{{ route('conta.index') }}"><button>Listagem</button></a>
-    <a href="{{ route('conta.show', ['conta' => $conta->id]) }}"><button>Visualizar</button></a>
+                <div class="col-md-12">
+                    <label for="valor" class="form-label">Valor</label>
+                    <input type="text" name="valor" id="valor"
+                        value="{{ old('valor', isset($conta->valor) ? number_format($conta->valor, 2, ',', '.') : '') }}"
+                        class="form-control">
+                </div>
 
-    <h2>Editar a Conta</h2>
+                <div class="col-md-12">
+                    <label for="vencimento" class="form-label">Vencimento</label>
+                    <input type="date" name="vencimento" id="vencimento"
+                        value="{{ old('vencimento', $conta->vencimento) }}" class="form-control">
+                </div>
 
-    @if (session('error'))
-        <span style="color:red;">
-            {{ session('error') }}
-        </span><br>
-    @endif <br>
-
-    @if ($errors->any())
-        <span style="color:red;">
-            @foreach ($errors->all() as $error)
-                {{ $error }} <br>
-            @endforeach
-        </span>
-    @endif
-
-    <form action="{{ route('conta.update', ['conta' => $conta->id]) }}" method="POST">
-        @csrf
-        @method('PUT')
-        <label for="nome">Nome</label>
-        <input type="text" name="nome" value="{{ old('nome', $conta->nome) }}"><br>
-
-        <label for="valor">Valor</label>
-        <input type="text" id="valor" name="valor"
-            value="{{ old('valor', isset($conta->valor) ? number_format($conta->valor, 2, ',', '.') : '') }}"><br>
-
-        <label for="vencimento">Vencimento</label>
-        <input type="date" name="vencimento" value="{{ old('vencimento', $conta->vencimento) }}"><br>
-
-        <br>
-
-
-        <button type="submit">Editar</button>
-
-    </form>
-
-@endsection
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-warning btn-sm">Editar</button>
+                </div>
+            </form>
+        </div>
+    @endsection

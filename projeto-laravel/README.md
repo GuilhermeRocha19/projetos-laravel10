@@ -2,11 +2,18 @@
 
 * PHP 8.2 ou superior
 * Composer
+* Node.js 20 ou superior
 
 ## Como rodar o projeto baixado
-Instalar as dependências 
+Instalar as dependências do PHP
 ```
 composer install
+```
+Instalar as dependências do Node.js
+
+Instalar o Vite
+```
+npm install
 ```
 
 Duplicar o arquivo ".env.example" e renomear para ".env"
@@ -47,6 +54,11 @@ Iniciar o projeto criado com Laravel
 ```
 php artisan serve
 ```
+Executas as bibliotecas Node.js
+```
+npm run dev
+```
+
 
 Acessar o conteúdo padrão do Laravel
 ```
@@ -103,4 +115,18 @@ php artisan make:seeder ContaSeeder
 Executar as Seed
 ```
 php artisan db:seed
+```
+
+Instalar o framkework boostrap
+```
+npm i --save bootstrap @popperjs/core
+```
+Instalar o sass
+```
+npm i --save-dev sass
+```
+
+Executas as bibliotecas Node.js
+```
+npm run dev
 ```

@@ -1,40 +1,57 @@
 @extends('layouts/admin')
 @section('content')
+    <div class="card mt-4 mb-4 border-light shadow">
+        <div class="card-header d-flex justify-content-between">
+            <span>Cadastrar Conta</span>
+            <span>
+                <a href="{{ route('conta.index') }}" class="btn btn-info btn-sm me-1">Listagem</a>
+            </span>
+        </div>
+
+        @if (session('error'))
+            <div class="alert alert-danger" role="alert">
+                <span>
+                    {{ session('error') }}
+                </span>
+            </div>
+        @endif
+
+        @if ($errors->any())
+            <div class="alert alert-danger" role="alert">
+                <span>
+                    @foreach ($errors->all() as $error)
+                        {{ $error }} <br>
+                    @endforeach
+            </div>
+            </span>
+        @endif
 
 
+        <div class="card-body">
+            <form action="{{ route('conta.store') }}" method="POST" class="row g-3">
+                @csrf
+                <div class="col-md-12">
+                    <label for="nome" class="form-label">Nome</label>
+                    <input type="text" name="nome" id="nome" value="{{ old('nome') }}"
+                        class="form-control">
+                </div>
 
-    <a href="{{ route('conta.index') }}"><button>Listagem</button></a>
+                <div class="col-md-12">
+                    <label for="valor" class="form-label">Valor</label>
+                    <input type="text" name="valor" id="valor"
+                        value="{{ old('valor') }}"
+                        class="form-control">
+                </div>
 
-    <h2>Cadastrar a Conta</h2>
+                <div class="col-md-12">
+                    <label for="vencimento" class="form-label">Vencimento</label>
+                    <input type="date" name="vencimento" id="vencimento"
+                        value="{{ old('vencimento') }}" class="form-control">
+                </div>
 
-    @if (session('error'))
-        <span style="color:red;">
-            {{ session('error') }}
-        </span><br>
-    @endif <br>
-
-    @if ($errors->any())
-        <span style="color:red;">
-            @foreach ($errors->all() as $error)
-                {{ $error }} <br>
-            @endforeach
-        </span>
-    @endif
-    <br>
-
-    <form action="{{ route('conta.store') }}" method="POST">
-        @csrf
-        <label for="nome">Nome</label>
-        <input type="text" name="nome" value="{{ old('nome') }}"><br>
-
-        <label for="valor">Valor</label>
-        <input type="text" name="valor" id="valor" value="{{ old('valor') }}"><br>
-
-        <label for="vencimento">Vencimento</label>
-        <input type="date" name="vencimento" value="{{ old('vencimento') }}"><br>
-
-        <button type="submit">Cadastrar</button>
-    </form>
-
-    
-@endsection
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-warning btn-sm">Cadastrar</button>
+                </div>
+            </form>
+        </div>
+    @endsection
