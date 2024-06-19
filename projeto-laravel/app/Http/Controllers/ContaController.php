@@ -11,11 +11,19 @@ use Illuminate\Support\Facades\Log;
 class ContaController extends Controller
 {
     //Listar Contas
-    public function index(){
-        $contas = Conta::orderByDesc('created_at')->get();
+    public function index(Request $request){
+        $contas = Conta::when($request->has('nome'), function($whenQuery) use ($request){
+            $whenQuery->where('nome','like', '%'.$request->nome.'%');
+        })
+        ->orderByDesc('created_at')
+        ->paginate(5)
+        ->withQueryString();
         
         //Carregar a VIEW
-        return view('contas.index',['contas' => $contas]); 
+        return view('contas.index',[
+            'contas' => $contas,
+            'nome' => $request->nome
+        ]); 
     }
 
     //Detalhes da Conta
