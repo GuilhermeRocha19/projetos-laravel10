@@ -130,3 +130,8 @@ Executas as bibliotecas Node.js
 ```
 npm run dev
 ```
+
+Instalar a biblioteca para gerar PDF
+```
+composer require barryvdh/laravel-dompdf
+```

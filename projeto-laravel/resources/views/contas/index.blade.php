@@ -9,35 +9,44 @@
                 <div class="row">
                     <div class="col-md-3 col-sm-12">
                         <label class="form-label" for="nome">Nome</label>
-                        <input type="text" name="nome" id="nome" class="form-control" placeholder="Nome da Conta" value="{{ $nome }}">
+                        <input type="text" name="nome" id="nome" class="form-control" placeholder="Nome da Conta"
+                            value="{{ $nome }}">
                     </div>
-    
+
                     <div class="col-md-3 col-sm-12">
                         <label class="form-label" for="data_inicio">Data Início</label>
-                        <input type="date" name="data_inicio" id="data_inicio" class="form-control" value="{{ $data_inicio }}">
+                        <input type="date" name="data_inicio" id="data_inicio" class="form-control"
+                            value="{{ $data_inicio }}">
                     </div>
-    
+
                     <div class="col-md-3 col-sm-12">
                         <label class="form-label" for="data_final">Data Final</label>
-                        <input type="date" name="data_final" id="data_final" class="form-control" value="{{ $data_final }}">
+                        <input type="date" name="data_final" id="data_final" class="form-control"
+                            value="{{ $data_final }}">
                     </div>
-    
+
                     <div class="col-md-3 col-sm-12 mt-3 pt-4">
                         <button type="submit" class="btn btn-info btn-sm">Pesquisar</button>
                         <a href="{{ route('conta.index') }}" class="btn btn-info btn-sm">Limpar</a>
                     </div>
                 </div>
             </form>
-    
+
         </div>
     </div>
 
-   
+
 
     <div class="card mt-4 mb-4 border-light shadow">
         <div class="card-header d-flex justify-content-between align-items-center">
             <span>Listar Contas</span>
-            <a href="{{ route('conta.create') }}" class="btn btn-success btn-sm">Cadastrar</a>
+            <div>
+                <a href="{{ route('conta.create') }}" class="btn btn-success btn-sm">Cadastrar</a>
+                {{-- <a href="{{ route('conta.pdf') }}" class="btn btn-warning btn-sm">Gerar PDF</a> --}}
+
+                <a href=" {{ url('gerar-pdf-conta?' . request()->getQueryString()) }}" class="btn btn-warning btn-sm">Gerar Pdf</a>
+            </div>
+
         </div>
 
         @if (session('sucess'))

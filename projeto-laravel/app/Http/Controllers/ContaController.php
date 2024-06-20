@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ContaRequest;
 use App\Models\Conta;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -103,6 +104,28 @@ class ContaController extends Controller
         $conta->delete();
 
         return redirect()->route('conta.index', ['conta' => $conta])->with('sucess', "Conta excluida com sucesso");
+    }
+
+
+    //Gerar PDF
+    public function gerarPdf(Request $request){
+        //Recuperar Registro do banco de dados
+        $contas = Conta::when($request->has('nome'), function($whenQuery) use ($request){
+            $whenQuery->where('nome','like', '%'.$request->nome.'%');
+        })
+        ->when($request->filled('data_inicio'), function($whenQuery) use ($request){
+            $whenQuery->where('vencimento','>=', \Carbon\Carbon::parse($request->data_inicio)->format('Y-m-d'));
+        })
+        ->when($request->filled('data_final'), function($whenQuery) use ($request){
+            $whenQuery->where('vencimento','<=', \Carbon\Carbon::parse($request->data_final)->format('Y-m-d'));
+        })
+        ->orderByDesc('created_at')
+        ->get();
+
+        // $contas = Conta::orderByDesc('id')->get();
+
+        $pdf = Pdf::loadView('contas.gerar_pdf',  ['contas' => $contas])->setPaper('a4', 'portrait');
+        return $pdf->stream();
     }
 
 }
