@@ -7,12 +7,22 @@
         <div class="card-body">
             <form action="{{ route('conta.index') }}">
                 <div class="row">
-                    <div class="col-md-6 col-sm-12">
+                    <div class="col-md-3 col-sm-12">
                         <label class="form-label" for="nome">Nome</label>
-                        <input type="text" name="nome" id="nome" class="form-control" placeholder="Nome da Conta">
+                        <input type="text" name="nome" id="nome" class="form-control" placeholder="Nome da Conta" value="{{ $nome }}">
                     </div>
     
-                    <div class="col-md-6 col-sm-12 mt-3 pt-4">
+                    <div class="col-md-3 col-sm-12">
+                        <label class="form-label" for="data_inicio">Data Início</label>
+                        <input type="date" name="data_inicio" id="data_inicio" class="form-control" value="{{ $data_inicio }}">
+                    </div>
+    
+                    <div class="col-md-3 col-sm-12">
+                        <label class="form-label" for="data_final">Data Final</label>
+                        <input type="date" name="data_final" id="data_final" class="form-control" value="{{ $data_final }}">
+                    </div>
+    
+                    <div class="col-md-3 col-sm-12 mt-3 pt-4">
                         <button type="submit" class="btn btn-info btn-sm">Pesquisar</button>
                         <a href="{{ route('conta.index') }}" class="btn btn-info btn-sm">Limpar</a>
                     </div>
