@@ -1,3 +1,4 @@
+@extends('components/alert')
 @extends('layouts/admin')
 @section('content')
     <div class="card mt-4 mb-4 border-light shadow">
@@ -7,24 +8,6 @@
                 <a href="{{ route('conta.index') }}" class="btn btn-info btn-sm me-1">Listagem</a>
             </span>
         </div>
-
-        @if (session('error'))
-            <div class="alert alert-danger" role="alert">
-                <span>
-                    {{ session('error') }}
-                </span>
-            </div>
-        @endif
-
-        @if ($errors->any())
-            <div class="alert alert-danger" role="alert">
-                <span>
-                    @foreach ($errors->all() as $error)
-                        {{ $error }} <br>
-                    @endforeach
-            </div>
-            </span>
-        @endif
 
 
         <div class="card-body">

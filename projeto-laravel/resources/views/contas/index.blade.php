@@ -1,5 +1,7 @@
+@extends('components/alert')
 @extends('layouts/admin')
 @section('content')
+
     <div class="card mt-3 mb-4 border-light shadow">
         <div class="card-header d-flex justify-content-between align-items-center">
             <span>Pesquisar</span>
@@ -49,13 +51,6 @@
 
         </div>
 
-        @if (session('sucess'))
-            <div class="alert alert-success" role="alert">
-                <span style="color:#082;">
-                    {{ session('sucess') }}
-                </span>
-            </div>
-        @endif
 
         <div class="card-body">
             <div class="table-responsive">

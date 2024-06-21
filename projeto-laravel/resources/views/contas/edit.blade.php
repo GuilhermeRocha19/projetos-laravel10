@@ -1,3 +1,4 @@
+@extends('components/alert')
 @extends('layouts/admin')
 @section('content')
     <div class="card mt-4 mb-4 border-light shadow">
@@ -9,25 +10,6 @@
                     class="btn btn-warning btn-sm me-1">Visualizar</a>
             </span>
         </div>
-
-        @if (session('error'))
-            <div class="alert alert-danger" role="alert">
-                <span>
-                    {{ session('error') }}
-                </span>
-            </div>
-        @endif
-
-        @if ($errors->any())
-            <div class="alert alert-danger" role="alert">
-                <span>
-                    @foreach ($errors->all() as $error)
-                        {{ $error }} <br>
-                    @endforeach
-            </div>
-            </span>
-        @endif
-
 
         <div class="card-body">
             <form action="{{ route('conta.update', ['conta' => $conta->id]) }}" method="POST" class="row g-3">

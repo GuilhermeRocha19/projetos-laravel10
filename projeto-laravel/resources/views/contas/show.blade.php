@@ -1,3 +1,4 @@
+@extends('components/alert')
 @extends('layouts/admin')
 @section('content')
     <div class="card mt-4 mb-4 border-light shadow">
@@ -9,14 +10,6 @@
             </span>
         </div>
 
-
-        @if (session('sucess'))
-            <div class="alert alert-success" role="alert">
-                <span style="color:#082;">
-                    {{ session('sucess') }}
-                </span>
-            </div>
-        @endif
 
         <div class="card-body">
             <dl class="row">
@@ -30,13 +23,16 @@
                 <dd class="col-sm-9">{{ number_format($conta->valor, 2, ',', '.') }}</dd>
 
                 <dt class="col-sm-3">Vencimento</dt>
-                <dd class="col-sm-9">{{ \Carbon\Carbon::parse($conta->vencimento)->tz('America/Sao_Paulo')->format('d/m/Y') }}</dd>
+                <dd class="col-sm-9">
+                    {{ \Carbon\Carbon::parse($conta->vencimento)->tz('America/Sao_Paulo')->format('d/m/Y') }}</dd>
 
                 <dt class="col-sm-3">Data Criação</dt>
-                <dd class="col-sm-9">{{ \Carbon\Carbon::parse($conta->created_at)->tz('America/Sao_Paulo')->format('d/m/Y H:i:s') }}</dd>
+                <dd class="col-sm-9">
+                    {{ \Carbon\Carbon::parse($conta->created_at)->tz('America/Sao_Paulo')->format('d/m/Y H:i:s') }}</dd>
 
                 <dt class="col-sm-3">Última Alteração</dt>
-                <dd class="col-sm-9">{{ \Carbon\Carbon::parse($conta->updated_at)->tz('America/Sao_Paulo')->format('d/m/Y H:i:s') }}</dd>
+                <dd class="col-sm-9">
+                    {{ \Carbon\Carbon::parse($conta->updated_at)->tz('America/Sao_Paulo')->format('d/m/Y H:i:s') }}</dd>
             </dl>
 
         </div>
