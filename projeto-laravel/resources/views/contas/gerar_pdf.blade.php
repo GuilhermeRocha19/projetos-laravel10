@@ -78,14 +78,12 @@
                 </tr>
             @endforelse
         </tbody>
-        @if($contas->count() > 0)
             <tfoot>
                 <tr>
-                    <td colspan="3" class="total">Total</td>
-                    <td class="total">{{ 'R$' . number_format($contas->sum('valor'), 2, ',', '.') }}</td>
+                    <td colspan="2" class="total">Total</td>
+                    <td colspan="2" class="total">{{ 'R$' . number_format($valorTotal, 2, ',', '.') }}</td>
                 </tr>
             </tfoot>
-        @endif
     </table>
 </body>
 

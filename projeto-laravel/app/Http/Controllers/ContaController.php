@@ -122,9 +122,12 @@ class ContaController extends Controller
         ->orderByDesc('created_at')
         ->get();
 
-        // $contas = Conta::orderByDesc('id')->get();
+        $valorTotal = $contas->sum('valor');
 
-        $pdf = Pdf::loadView('contas.gerar_pdf',  ['contas' => $contas])->setPaper('a4', 'portrait');
+        $pdf = Pdf::loadView('contas.gerar_pdf',  [
+            'contas' => $contas,
+            'valorTotal' => $valorTotal
+            ])->setPaper('a4', 'portrait');
         return $pdf->stream();
     }
 
