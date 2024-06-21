@@ -77,11 +77,11 @@
                                         class="btn btn-info btn-sm me-1">Visualizar</a>
                                     <a href="{{ route('conta.edit', ['conta' => $conta->id]) }}"
                                         class="btn btn-warning btn-sm me-1">Editar</a>
-                                    <form action="{{ route('conta.destroy', ['conta' => $conta->id]) }}" method="POST">
+                                    <form id="formExcluir{{ $conta->id }}" action="{{ route('conta.destroy', ['conta' => $conta->id]) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-danger btn-sm me-1" type="submit"
-                                            onclick="return confirm('Você deseja apagar este registro?')">Apagar</button>
+                                            onclick="confirmarExclusao(event, {{ $conta->id }})">Apagar</button>
                                     </form>
                                 </td>
                             </tr>
