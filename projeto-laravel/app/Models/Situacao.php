@@ -5,18 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Conta extends Model
+class Situacao extends Model
 {
     use HasFactory;
 
     //Indicar o nome da tabela
-    protected $table = 'contas';
+    protected $table = 'situacao';
 
     //Indicar quais colunas podem ser cadastradas
-    protected $fillable = ['nome','valor','vencimento'];
+    protected $fillable = ['nome','cor'];
 
-    public function situacao()
+    public function conta()
     {
-        return $this->belongsTo(Situacao::class);
+        return $this->hasMany(Conta::class);
     }
 }
